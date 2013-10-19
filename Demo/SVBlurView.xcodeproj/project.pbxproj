@@ -19,8 +19,9 @@
 		22EF108F181325AA00CDF72C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF108E181325AA00CDF72C /* XCTest.framework */; };
 		22EF1090181325AA00CDF72C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF106F181325A900CDF72C /* Foundation.framework */; };
 		22EF1091181325AA00CDF72C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EF1073181325A900CDF72C /* UIKit.framework */; };
-		22EF1099181325AA00CDF72C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22EF1097181325AA00CDF72C /* InfoPlist.strings */; };
-		22EF109B181325AA00CDF72C /* SVBlurViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF109A181325AA00CDF72C /* SVBlurViewTests.m */; };
+		22EF10AA181326D600CDF72C /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EF10A9181326D600CDF72C /* background@2x.png */; };
+		22EF10AE18132FD800CDF72C /* SVBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF10AD18132FD800CDF72C /* SVBlurView.m */; };
+		22EF10B01813311700CDF72C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 22EF10AF1813311700CDF72C /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +51,10 @@
 		22EF1087181325A900CDF72C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22EF108D181325AA00CDF72C /* SVBlurViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SVBlurViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EF108E181325AA00CDF72C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		22EF1096181325AA00CDF72C /* SVBlurViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SVBlurViewTests-Info.plist"; sourceTree = "<group>"; };
-		22EF1098181325AA00CDF72C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		22EF109A181325AA00CDF72C /* SVBlurViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SVBlurViewTests.m; sourceTree = "<group>"; };
+		22EF10A9181326D600CDF72C /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		22EF10AC18132FD800CDF72C /* SVBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVBlurView.h; sourceTree = "<group>"; };
+		22EF10AD18132FD800CDF72C /* SVBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVBlurView.m; sourceTree = "<group>"; };
+		22EF10AF1813311700CDF72C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +84,9 @@
 		22EF1063181325A900CDF72C = {
 			isa = PBXGroup;
 			children = (
-				22EF1075181325A900CDF72C /* SVBlurView */,
-				22EF1094181325AA00CDF72C /* SVBlurViewTests */,
+				22EF10AF1813311700CDF72C /* README.md */,
+				22EF1075181325A900CDF72C /* Classes */,
+				22EF10AB18132FD800CDF72C /* SVBlurView */,
 				22EF106E181325A900CDF72C /* Frameworks */,
 				22EF106D181325A900CDF72C /* Products */,
 			);
@@ -109,7 +112,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		22EF1075181325A900CDF72C /* SVBlurView */ = {
+		22EF1075181325A900CDF72C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				22EF107E181325A900CDF72C /* AppDelegate.h */,
@@ -117,9 +120,11 @@
 				22EF1081181325A900CDF72C /* Main.storyboard */,
 				22EF1084181325A900CDF72C /* ViewController.h */,
 				22EF1085181325A900CDF72C /* ViewController.m */,
+				22EF10A9181326D600CDF72C /* background@2x.png */,
 				22EF1087181325A900CDF72C /* Images.xcassets */,
 				22EF1076181325A900CDF72C /* Supporting Files */,
 			);
+			name = Classes;
 			path = SVBlurView;
 			sourceTree = "<group>";
 		};
@@ -134,22 +139,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		22EF1094181325AA00CDF72C /* SVBlurViewTests */ = {
+		22EF10AB18132FD800CDF72C /* SVBlurView */ = {
 			isa = PBXGroup;
 			children = (
-				22EF109A181325AA00CDF72C /* SVBlurViewTests.m */,
-				22EF1095181325AA00CDF72C /* Supporting Files */,
+				22EF10AC18132FD800CDF72C /* SVBlurView.h */,
+				22EF10AD18132FD800CDF72C /* SVBlurView.m */,
 			);
-			path = SVBlurViewTests;
-			sourceTree = "<group>";
-		};
-		22EF1095181325AA00CDF72C /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				22EF1096181325AA00CDF72C /* SVBlurViewTests-Info.plist */,
-				22EF1097181325AA00CDF72C /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
+			name = SVBlurView;
+			path = ../SVBlurView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +226,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22EF1088181325A900CDF72C /* Images.xcassets in Resources */,
+				22EF10AA181326D600CDF72C /* background@2x.png in Resources */,
+				22EF10B01813311700CDF72C /* README.md in Resources */,
 				22EF107A181325A900CDF72C /* InfoPlist.strings in Resources */,
 				22EF1083181325A900CDF72C /* Main.storyboard in Resources */,
 			);
@@ -238,7 +237,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22EF1099181325AA00CDF72C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22EF10AE18132FD800CDF72C /* SVBlurView.m in Sources */,
 				22EF1086181325A900CDF72C /* ViewController.m in Sources */,
 				22EF1080181325A900CDF72C /* AppDelegate.m in Sources */,
 				22EF107C181325A900CDF72C /* main.m in Sources */,
@@ -259,7 +258,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22EF109B181325AA00CDF72C /* SVBlurViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,14 +286,6 @@
 				22EF1082181325A900CDF72C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		22EF1097181325AA00CDF72C /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				22EF1098181325AA00CDF72C /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -460,6 +450,7 @@
 				22EF10A0181325AA00CDF72C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		22EF10A1181325AA00CDF72C /* Build configuration list for PBXNativeTarget "SVBlurViewTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +459,7 @@
 				22EF10A3181325AA00CDF72C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
