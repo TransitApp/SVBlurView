@@ -22,6 +22,7 @@
 		22EF10AA181326D600CDF72C /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EF10A9181326D600CDF72C /* background@2x.png */; };
 		22EF10AE18132FD800CDF72C /* SVBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF10AD18132FD800CDF72C /* SVBlurView.m */; };
 		22EF10B01813311700CDF72C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 22EF10AF1813311700CDF72C /* README.md */; };
+		22EF10BB181336AA00CDF72C /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 22EF10BA181336AA00CDF72C /* UIImage+ImageEffects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		22EF10AC18132FD800CDF72C /* SVBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVBlurView.h; sourceTree = "<group>"; };
 		22EF10AD18132FD800CDF72C /* SVBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVBlurView.m; sourceTree = "<group>"; };
 		22EF10AF1813311700CDF72C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		22EF10B9181336AA00CDF72C /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		22EF10BA181336AA00CDF72C /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,8 @@
 		22EF10AB18132FD800CDF72C /* SVBlurView */ = {
 			isa = PBXGroup;
 			children = (
+				22EF10B9181336AA00CDF72C /* UIImage+ImageEffects.h */,
+				22EF10BA181336AA00CDF72C /* UIImage+ImageEffects.m */,
 				22EF10AC18132FD800CDF72C /* SVBlurView.h */,
 				22EF10AD18132FD800CDF72C /* SVBlurView.m */,
 			);
@@ -248,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22EF10AE18132FD800CDF72C /* SVBlurView.m in Sources */,
+				22EF10BB181336AA00CDF72C /* UIImage+ImageEffects.m in Sources */,
 				22EF1086181325A900CDF72C /* ViewController.m in Sources */,
 				22EF1080181325A900CDF72C /* AppDelegate.m in Sources */,
 				22EF107C181325A900CDF72C /* main.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "SVBlurView.h"
+#import "UIImage+ImageEffects.h"
 
 @interface SVBlurView ()
 
@@ -20,7 +21,11 @@
 - (id)initWithFrame:(CGRect)frame {
     if(self = [super initWithFrame:frame])
         [self addSubview:self.blurContainerView];
-    self.blurRadius = 40;
+    
+    self.blurRadius = 20;
+    self.saturationDelta = 1.5;
+    self.tintColor = nil;
+    
     self.clipsToBounds = YES;
     return self;
 }
@@ -50,14 +55,10 @@
 }
 
 - (UIImage *)applyBlurToImage:(UIImage *)image {
-    CIContext *context = [CIContext contextWithOptions:nil];
-    CIImage *ci_image = [CIImage imageWithCGImage:image.CGImage];
-    CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
-    [filter setValue:ci_image forKey:kCIInputImageKey];
-    [filter setValue:@(self.blurRadius) forKey:kCIInputRadiusKey];
-    CIImage *result = [filter valueForKey:kCIOutputImageKey];
-    CGImageRef cgImage = [context createCGImage:result fromRect:[result extent]];
-    return [UIImage imageWithCGImage:cgImage scale:image.scale orientation:image.imageOrientation];
+    return [image applyBlurWithRadius:self.blurRadius
+                            tintColor:self.tintColor
+                saturationDeltaFactor:self.saturationDelta
+                            maskImage:nil];
 }
 
 - (void)didMoveToSuperview {

@@ -23,7 +23,9 @@ SVBlurView *blurView = [[SVBlurView alloc] initWithFrame:CGRectMake(60, 100, 200
 #### Customization
 
 ```objective-c
-@property (nonatomic, readwrite) CGFloat blurRadius; // defaults to 40.0f
+@property (nonatomic, readwrite) CGFloat blurRadius; // default is 20.0f
+@property (nonatomic, readwrite) CGFloat saturationDelta; // default is 1.5
+@property (nonatomic, readwrite) UIColor *tintColor; // default nil
 ```
 
 ## Credits
