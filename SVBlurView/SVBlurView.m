@@ -41,17 +41,22 @@
 }
 
 - (void)updateBlur {
-    CGRect superviewBounds = self.superview.bounds;
-    UIGraphicsBeginImageContextWithOptions(superviewBounds.size, NO, 0.0);
-    [self.superview drawViewHierarchyInRect:superviewBounds afterScreenUpdates:YES];
-    
-    UIImage *complexViewImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    UIImage *blurredImage = [self applyBlurToImage:complexViewImage];
-    self.blurContainerView.frame = superviewBounds;
-    self.blurContainerView.layer.contents = (id)blurredImage.CGImage;
-    self.blurContainerView.layer.position = [self convertPoint:self.superview.center fromView:self.superview];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        CGRect superviewBounds = self.superview.bounds;
+        UIGraphicsBeginImageContextWithOptions(superviewBounds.size, NO, 0.0);
+        [self.superview drawViewHierarchyInRect:superviewBounds afterScreenUpdates:NO];
+        
+        UIImage *complexViewImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        UIImage *blurredImage = [self applyBlurToImage:complexViewImage];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.blurContainerView.frame = superviewBounds;
+            self.blurContainerView.layer.contents = (id)blurredImage.CGImage;
+            self.blurContainerView.layer.position = [self convertPoint:self.superview.center fromView:self.superview];
+        });
+     });
 }
 
 - (UIImage *)applyBlurToImage:(UIImage *)image {
