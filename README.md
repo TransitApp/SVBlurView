@@ -1,6 +1,6 @@
 # SVBlurView
 
-SVBlurView is a simple reimplementation of FXBlurView for iOS 7. It uses `CIFilter` as well as the new `drawViewHierarchyInRect:` UIView API. It doesn't do dynamic blurs yet.
+SVBlurView is a simple reimplementation of FXBlurView for iOS 7. It uses Apple's `UIImage+ImageEffects` category as well as the new `drawViewHierarchyInRect:` UIView API. It doesn't do dynamic blurs yet.
 
 ![SVBlurView](http://f.cl.ly/items/1q1D0k180z2Y0u2J3x2f/iOS%20Simulator%20Screen%20shot%2019%20Oct,%202013%205.34.21%20PM.png)
 
