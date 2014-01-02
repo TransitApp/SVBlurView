@@ -23,6 +23,7 @@
         self.tintColor = nil;
         self.viewToBlur = nil;
         self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -35,7 +36,7 @@
 
 - (void)updateBlur {
     UIGraphicsBeginImageContextWithOptions(self.viewToBlur.bounds.size, NO, 0.0);
-    [self.viewToBlur drawViewHierarchyInRect:self.viewToBlur.bounds afterScreenUpdates:YES];
+    [self.viewToBlur drawViewHierarchyInRect:self.viewToBlur.bounds afterScreenUpdates:NO];
     UIImage *complexViewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
@@ -61,8 +62,11 @@
 }
 
 - (void)didMoveToSuperview {
-    if(self.superview)
-        [self updateBlur];
+    if(self.superview) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateBlur];
+        });
+    }
     else
         self.layer.contents = nil;
 }
