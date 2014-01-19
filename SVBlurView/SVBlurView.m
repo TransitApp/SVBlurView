@@ -63,9 +63,7 @@
 
 - (void)didMoveToSuperview {
     if(self.superview) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self updateBlur];
-        });
+        [self updateBlur];
     }
     else
         self.layer.contents = nil;
