@@ -36,7 +36,7 @@
 
 - (void)updateBlur {
     UIGraphicsBeginImageContextWithOptions(self.viewToBlur.bounds.size, NO, 0.0);
-    [self.viewToBlur drawViewHierarchyInRect:self.viewToBlur.bounds afterScreenUpdates:NO];
+    [self.viewToBlur drawViewHierarchyInRect:self.viewToBlur.bounds afterScreenUpdates:YES];
     UIImage *complexViewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
