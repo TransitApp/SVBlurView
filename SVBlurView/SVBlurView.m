@@ -23,7 +23,6 @@
         self.tintColor = nil;
         self.viewToBlur = nil;
         self.clipsToBounds = YES;
-        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -59,11 +58,14 @@
 }
 
 - (void)didMoveToSuperview {
-    if(self.superview) {
+    if(self.superview && self.viewToBlur.superview) {
+        self.backgroundColor = [UIColor clearColor];
         [self updateBlur];
     }
-    else
+    else {
         self.layer.contents = nil;
+        self.backgroundColor = [UIColor whiteColor];
+    }
 }
 
 @end
