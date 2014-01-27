@@ -11,47 +11,44 @@
 
 @interface SVBlurView ()
 
-@property (nonatomic, strong) UIView *blurContainerView;
-
 @end
 
 
 @implementation SVBlurView
 
 - (id)initWithFrame:(CGRect)frame {
-    if(self = [super initWithFrame:frame])
-        [self addSubview:self.blurContainerView];
-    
-    self.blurRadius = 20;
-    self.saturationDelta = 1.5;
-    self.tintColor = nil;
-    
-    self.clipsToBounds = YES;
+    if(self = [super initWithFrame:frame]) {
+        self.blurRadius = 20;
+        self.saturationDelta = 1.5;
+        self.tintColor = nil;
+        self.viewToBlur = nil;
+        self.clipsToBounds = YES;
+        self.backgroundColor = [UIColor clearColor];
+    }
     return self;
 }
 
-- (UIView *)blurContainerView {
-    if(!_blurContainerView) {
-        _blurContainerView = [[UIView alloc] initWithFrame:CGRectZero];
-        _blurContainerView.layer.masksToBounds = YES;
-        _blurContainerView.layer.contentsScale = [UIScreen mainScreen].scale;
-        _blurContainerView.layer.contentsGravity = kCAGravityCenter;
-    }
-    return _blurContainerView;
+- (UIView *)viewToBlur {
+    if(_viewToBlur)
+        return _viewToBlur;
+    return self.superview;
 }
 
 - (void)updateBlur {
-    CGRect superviewBounds = self.superview.bounds;
-    UIGraphicsBeginImageContextWithOptions(superviewBounds.size, NO, 0.0);
-    [self.superview drawViewHierarchyInRect:superviewBounds afterScreenUpdates:YES];
-    
+    UIGraphicsBeginImageContextWithOptions(self.viewToBlur.bounds.size, NO, 0.0);
+    [self.viewToBlur drawViewHierarchyInRect:self.viewToBlur.bounds afterScreenUpdates:NO];
     UIImage *complexViewImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    UIImage *blurredImage = [self applyBlurToImage:complexViewImage];
-    self.blurContainerView.frame = superviewBounds;
-    self.blurContainerView.layer.contents = (id)blurredImage.CGImage;
-    self.blurContainerView.layer.position = [self convertPoint:self.superview.center fromView:self.superview];
+    float scale = [UIScreen mainScreen].scale;
+    CGRect translationRect = [self convertRect:self.bounds toView:self.viewToBlur];
+    CGRect scaledSuperviewFrame = CGRectApplyAffineTransform(translationRect, CGAffineTransformMakeScale(scale, scale));
+    CGImageRef croppedImageRef = CGImageCreateWithImageInRect(complexViewImage.CGImage, scaledSuperviewFrame);
+    UIImage *croppedImage = [UIImage imageWithCGImage:croppedImageRef scale:complexViewImage.scale orientation:complexViewImage.imageOrientation];
+    UIImage *blurredImage = [self applyBlurToImage:croppedImage];
+    CGImageRelease(croppedImageRef);
+    
+    self.layer.contents = (id)blurredImage.CGImage;
 }
 
 - (UIImage *)applyBlurToImage:(UIImage *)image {
@@ -62,7 +59,11 @@
 }
 
 - (void)didMoveToSuperview {
-    [self updateBlur];
+    if(self.superview) {
+        [self updateBlur];
+    }
+    else
+        self.layer.contents = nil;
 }
 
 @end
