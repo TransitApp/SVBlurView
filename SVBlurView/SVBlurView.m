@@ -48,9 +48,6 @@
     UIImage *blurredImage = [self applyBlurToImage:croppedImage];
     CGImageRelease(croppedImageRef);
     
-    NSString* SPCacheDirectory = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
-    [UIImagePNGRepresentation(croppedImage) writeToFile:[SPCacheDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", NSStringFromClass(self.class)]] atomically:NO];
-    
     self.layer.contents = (id)blurredImage.CGImage;
 }
 
