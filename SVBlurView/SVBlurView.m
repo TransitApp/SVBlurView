@@ -9,6 +9,8 @@
 #import "SVBlurView.h"
 #import "UIImage+ImageEffects.h"
 
+NSString * const SVBlurViewImageKey = @"SVBlurViewImageKey";
+
 @interface SVBlurView ()
 
 @end
@@ -25,6 +27,18 @@
         self.clipsToBounds = YES;
     }
     return self;
+}
+
+- (void)encodeRestorableStateWithCoder:(NSCoder *)coder {
+    [super encodeRestorableStateWithCoder:coder];
+    
+    [coder encodeObject:[UIImage imageWithCGImage:(CGImageRef)self.layer.contents] forKey:SVBlurViewImageKey];
+}
+
+- (void)decodeRestorableStateWithCoder:(NSCoder *)coder {
+    [super decodeRestorableStateWithCoder:coder];
+    
+    self.layer.contents = (id)[[coder decodeObjectForKey:SVBlurViewImageKey] CGImage];
 }
 
 - (UIView *)viewToBlur {
@@ -62,8 +76,7 @@
         self.backgroundColor = [UIColor clearColor];
         [self updateBlur];
     }
-    else {
-        self.layer.contents = nil;
+    else if (!self.layer.contents) {
         self.backgroundColor = [UIColor whiteColor];
     }
 }
